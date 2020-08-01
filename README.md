@@ -186,6 +186,31 @@ In the example above, the field `{{:this.other_data}}` would refer to a member v
 template function itself. Using this method, you can also refer to global variables, or variables your declared in
 the template (see below).
 
+## Compiling with Options
+
+```javascript
+const myTemplate = Macrobars.compile(
+    $('#entry-template').html(), { my_option : 123 });
+```
+
+You can pass a compile-time options object into Macrobars, for example to pass variables
+that should be available to the template.
+
+In the example above, you could then use that option value in a template field like so:
+
+```html
+	{{:my_option}}
+```
+
+And you can of course also access options from template code like this:
+
+```html
+	<script>if(my_option) echo('And the value was: '+my_option);</script>
+```
+
+*Caveat*: please make sure that your option names are valid as JavaScript variable names (for 
+example can't contain any spaces or special characters).
+
 # Executing Code Directly
 
 Now comes the real meat of Macrobars: executing real JavaScript code directly within the template.
